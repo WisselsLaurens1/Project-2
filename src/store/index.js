@@ -19,7 +19,7 @@ export default new Vuex.Store({
       idToken: ""
     },
     endpoints: {
-      login: "http://localhost:3000/login",
+      login: "http://172.17.50.97:3000/login",
       products: "http://localhost:8000/products"
     },
    },
