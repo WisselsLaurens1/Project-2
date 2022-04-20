@@ -8,9 +8,11 @@ const headers = { Accept: "application/json" };
 const products = require('./products.json');
 
 
+
 export default new Vuex.Store({
   state: {
     products: products,
+    banks: require('./banks.json'),
     inCart: [],
     user: {
       isAuthenticated: false,

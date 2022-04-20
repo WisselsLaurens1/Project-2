@@ -9,10 +9,20 @@
     </div>  
   </div>
 </template>
-
+	
 <script>
-</script>
 
-<style scoped src="../../public/css/BankPortal.css">
-/* @import '../assets/css/startpage.css'; */
-</style>
+// @ is an alias to /src
+import Item from "@/Item.vue"	
+export default {
+  name: 'Home',
+  computed: {
+    products() {
+      return this.$store.state.products;
+    }
+  },
+  components: {
+    Item
+  }
+}
+</script>

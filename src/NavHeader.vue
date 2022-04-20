@@ -1,8 +1,13 @@
 <template>
   <nav class="navbar navbar-expand-sm" role="navigation">
     <div class="container">
-      <router-link to="/" class="navbar-brand mr-auto">McRoverShop</router-link>
-      <ul class="navbar-nav mr-auto"></ul>
+      <router-link to="/" class="navbar-brand mr-auto">McBankPortal</router-link>
+
+      <div class="navbar-nav mr-auto">
+        <router-link to="/" class="nav-tab">Home </router-link>
+        <router-link to="/portal" class="nav-tab">Bank portal</router-link>
+        <router-link to="/subscriptions" class="nav-tab">Subscriptions</router-link>
+      </div>
       <ul class="nav navbar-nav">
         <router-link
           to="/"
@@ -67,3 +72,6 @@ export default {
   },
 };
 </script>
+
+<style scoped src"../public/css/Nav.css">
+</style>

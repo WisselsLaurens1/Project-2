@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#page-title{
+    text-align: center;
+    margin: 1em
+}
+
+.bank-account{
+    width:fit-content;
+    margin:auto;
+    background-color: aliceblue;
+}
+
+#bank-accounts-container{
+    height:300px;
+    /* background-color: lightgray; */
+    /* box-shadow:  3px 0 1px #7b7b7b; */
+    width:fit-content;
+    margin:auto;
+    display: flex;
+
+}
+
+.bank-account{
+    height: 100%;
+    width: 200px;
+    margin: 1em;
+    box-shadow: 0px 0px 3px #bcbbbb;
+}
+
+.bank-account a:hover{
+    text-decoration:none;
+    
+}
+
+.bank-account-info{
+    border-top: 1px #bcbbbb;
+
+}
+
+#add-button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#add-button{
+    width:50px;
+    margin-right: 2em;
+}
+
+.image-container{
+    height: 60%;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+}
+
+.bank-logo{
+    max-width:100%;
+    max-height:100%;
+}
+
+.balance{
+    text-align:center;
+    margin-top:1em;
+}
+
+.owner{
+    text-align:center
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "id":1,
+        "name":"KBC",
+        "image":"../assets/kbc-logo.png",
+        "balance": 4200,
+        "owner":"Laurens Wissels"
+    },
+    {
+        "id":2,
+        "name":"ING",
+        "image":"@/assets/kbc-logo.png",
+        "balance": 4200,
+        "owner":"Laurens Wissels"
+    }
+
+]
