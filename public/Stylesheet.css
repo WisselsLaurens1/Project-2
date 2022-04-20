@@ -1,0 +1,68 @@
+/*Colors:
+    LR-lightgreen: #018A00
+    LR-green: #0C6223
+    LR-darkgreen: #012E0F
+    LR-white: #EDF1F4
+*/
+
+
+/*Navigation CSS*/
+nav {
+    background-color: #0C6223;
+}
+
+a.navbar-brand.mr-auto.router-link-exact-active.router-link-active {
+    color: #EDF1F4;
+    background-color: #012E0F;
+    padding: 1rem;
+    border-radius: 50%;
+    border: 3px solid #EDF1F4;
+}
+
+a.nav-link {
+    color: #FFFFFF;
+    font-size: larger;
+}
+
+a.nav-link:hover {
+    color: #e0e0e0;
+}
+
+a.nav-link:active {
+    text-decoration: underline;
+}
+
+button.btn.btn-primary.navbar-btn {
+    background-color: #000000;
+    border: 1px solid #FFFFFF;
+    margin: 0.3rem;
+}
+
+button.btn.btn-primary.navbar-btn:hover {
+    background-color: #018A00;
+}
+
+button.btn.btn-primary.navbar-btn:active {
+    background-color: #0C6223;
+}
+
+/*Product Page CSS*/
+div.card-body {
+    background-color: #DEDEDE;
+    margin: 0.5rem;
+    border-radius: 5px;
+}
+
+h5.card-title {
+    font-weight: bold;
+}
+
+div.card-body p button {
+    background-color: #000000;
+    width: 100%;
+    border: none;
+}
+
+div.card-body p button:hover {
+    background-color: #018A00;
+}
