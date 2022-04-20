@@ -21,7 +21,7 @@ export default new Vuex.Store({
       idToken: ""
     },
     endpoints: {
-      login: "http://localhost:3000/login",
+      login: "http://team17authenticatie-ucllteam08.ucll-ocp-40cb0df2b03969eabb3fac6e80373775-0000.eu-de.containers.appdomain.cloud",
       products: "http://localhost:8000/products"
     },
    },
