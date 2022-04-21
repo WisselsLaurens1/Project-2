@@ -24,7 +24,7 @@ export default new Vuex.Store({
       partner: false
     },
     endpoints: {
-      login: "http://localhost:3000/login",
+      login: "http://team17authenticatie-ucllteam08.ucll-ocp-40cb0df2b03969eabb3fac6e80373775-0000.eu-de.containers.appdomain.cloud:3000/login",
       products: "http://localhost:8000/products",
       partnercheck: "http://localhost:8000/check",
     },
