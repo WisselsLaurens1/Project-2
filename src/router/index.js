@@ -39,6 +39,13 @@ const routes = [
       return import(/* webpackChunkName: "about" */ '../views/BankAccount.vue')
     }
   },
+  {
+    path: '/view-accounts',
+    name: 'view-bank-account',
+    component: function () {
+      return import(/* webpackChunkName: "about" */ '../views/AllBankAccounts.vue')
+    }
+  },
 
   { path: '/loginwithtoken', name: 'loginwithtoken', component: Login },
 ]

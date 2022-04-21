@@ -27,11 +27,15 @@ export default new Vuex.Store({
       login: "http://localhost:3000/login",
       products: "http://localhost:8000/products",
       partnercheck: "http://localhost:8000/check",
+      bankaccounts: "http://localhost:8000/api/bankaccounts/overview",
+      subscriptions: "http://localhost:8000/api/subscriptions/overview"
     },
    },
    getters: {
     products: state => state.products,
     inCart: state => state.inCart,
+    bankaccounts: state => state.bankaccounts,
+    subscriptions: state => state.subscriptions,
    },
    mutations: { //synchronous
      setProducts(state, payload) {
@@ -65,7 +69,11 @@ export default new Vuex.Store({
      setUrls(state) {
        state.endpoints.login = process.env.VUE_APP_AUTH_URL;
        state.endpoints.products = process.env.VUE_APP_PRODUCTS_URL;
-       url = state.endpoints.products;
+       state.endpoints.bankaccounts = process.env.VUE_APP_BANKACCOUNTS_URL;
+       state.endpoints.subscriptions = process.env.VUE_APP_SUBSCRIPTIONS_URL;
+       urlproducts = state.endpoints.products;
+       urlbankaccounts = state.endpoints.bankaccounts;
+       urlsubscriptions = state.endpoints.subscriptions;
        console.log(process.env);
      }
    },
@@ -91,11 +99,23 @@ export default new Vuex.Store({
       }
     },
      async getProducts(state) {
-       const products = await fetch(url, { headers });
+       const products = await fetch(urlproducts, { headers });
        const prods = await products.json();
        state.commit("setProducts", prods);
        console.log(prods);
-     }
+     },
+     async getBankAccounts(state) {
+      const bankaccounts = await fetch(urlbankaccounts, { headers });
+      const accounts = await bankaccounts.json();
+      state.commit("setBankAccounts", accounts);
+      console.log(accounts);
+    },
+    async getSubscriptions(state) {
+      const subscriptions = await fetch(urlsubscriptions, { headers });
+      const Subs = await subscriptions.json();
+      state.commit("setBankSubscriptions", Subs);
+      console.log(Subs);
+    }
    },
    registerProduct({ state }, obj) {
     let productsurl = state.endpoints.products;
