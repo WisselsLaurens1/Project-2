@@ -1,6 +1,6 @@
 [
     {
-        "id":1,
+        "id":0,
         "name":"KBC",
         "image":"https://wcmassets.kbc.be/content/dam/particulieren/technical/kbc-logo.png.cdn.res/last-modified/1634737338100/kbc-logo.png",
         "balance": 4200,
@@ -9,12 +9,13 @@
         "users":[0,1]
     },
     {
-        "id":2,
+        "id":1,
         "name":"ING",
-        "image":"https://upload.wikimedia.org/wikipedia/commons/f/f1/ING_logo.jpg",
+        "image":"https://i.pinimg.com/originals/e6/af/4c/e6af4c308b061036bf2a18378948d454.gif",
         "balance": 4200,
         "owner":"Laurens Wissels",
-        "number": "BE52 5701 2345 6709" 
+        "number": "BE52 5701 2345 6709",
+        "users":[1]
 
     }
 

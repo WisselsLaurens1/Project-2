@@ -13,5 +13,10 @@
         "id":2,
         "firstName":"Robbe",
         "lastName":"Vandevelde"
+    },
+    {
+        "id":2,
+        "firstName":"Laurens",
+        "lastName":"Vandevelde"
     }
 ]

@@ -8,7 +8,6 @@ const headers = { Accept: "application/json" };
 const products = require('./products.json');
 
 
-
 export default new Vuex.Store({
   state: {
     products: products,
@@ -24,7 +23,7 @@ export default new Vuex.Store({
       login: "http://team17authenticatie-ucllteam08.ucll-ocp-40cb0df2b03969eabb3fac6e80373775-0000.eu-de.containers.appdomain.cloud",
       products: "http://localhost:8000/products"
     },
-    users: 
+    users: require('./users.json')
    },
    getters: {
     products: state => state.products,
@@ -33,12 +32,23 @@ export default new Vuex.Store({
       return state.banks[id]
    },
    getUsersOfAccount: (state) => (accountId, userPattern) => {
-     let users = state.banks[accountId]
-     users = users.filter(user => {
-       `${user.firstName.toLowerCase} ${user.lastname.toLowerCase}`.includes(userPattern.toLowerCase())
-     })
+
+    console.log("userPattern: ",userPattern)
+
+     let usersIds = state.banks[accountId].users
+     let users = usersIds.map(userId => state.users[userId])
+     users = users.filter(user => `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}`.includes(userPattern.toLowerCase()) == true)
+
      return users;
+   },
+   getPermittedUsers: (state) => (accountId) => {
+      let usersIds = []
+      usersIds = state.banks[accountId].users
+      let users = []
+      users = usersIds.map(userId => state.users[userId])
+      return users
    }
+
   },
    mutations: { //synchronous
      setProducts(state, payload) {
