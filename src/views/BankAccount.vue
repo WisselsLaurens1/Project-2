@@ -131,8 +131,10 @@ export default {
 
     },
     toggleSearchResults(){
+
+      console.log(document.getElementById("myInput").value.length == 0)
       if(document.getElementById("myInput").value.length == 0){
-        return
+        document.getElementById("search-results").style.display = "none"
       }
       if(document.getElementById("search-results").style.display == "none"){
         document.getElementById("search-results").style.display = "block"
