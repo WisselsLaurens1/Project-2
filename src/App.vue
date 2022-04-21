@@ -12,7 +12,6 @@ export default {
     NavHeader
   },
   mounted(){
-    console.log("test")
     this.$store.commit("setUrls");
     this.$store.dispatch("getProducts");
   }
