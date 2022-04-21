@@ -7,7 +7,7 @@ COPY . .
 CMD npm run build
 
 # production stage
-FROM nginx:1.17
+FROM nginx:1.16
 COPY ./nginx.conf /etc/nginx/nginx.conf
 WORKDIR /code
 COPY --from=build-stage /app/dist .
