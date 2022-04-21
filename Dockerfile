@@ -2,9 +2,9 @@
 FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+CMD npm install
 COPY . .
-RUN npm run build
+CMD npm run build
 
 # production stage
 FROM nginx:1.17
