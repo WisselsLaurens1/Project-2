@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-
+import createPersistedState from "vuex-persistedstate";
 Vue.use(Vuex)
 
 var url;
@@ -9,8 +9,8 @@ const headers = { Accept: "application/json" };
 const products = require('./products.json');
 
 
-
 export default new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
     products: products,
     banks: require('./banks.json'),
@@ -27,16 +27,34 @@ export default new Vuex.Store({
       login: "http://localhost:3000/login",
       products: "http://localhost:8000/products",
       partnercheck: "http://localhost:8000/check",
-      bankaccounts: "http://localhost:8000/api/bankaccounts/overview",
-      subscriptions: "http://localhost:8000/api/subscriptions/overview"
     },
+    users: require('./users.json')
    },
    getters: {
     products: state => state.products,
     inCart: state => state.inCart,
-    bankaccounts: state => state.bankaccounts,
-    subscriptions: state => state.subscriptions,
+    getBank: (state) => (id) => {
+      return state.banks[id]
    },
+   getUsersOfAccount: (state) => (accountId, userPattern) => {
+
+    console.log("userPattern: ",userPattern)
+
+     let usersIds = state.banks[accountId].users
+     let users = usersIds.map(userId => state.users[userId])
+     users = users.filter(user => `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}`.includes(userPattern.toLowerCase()) == true)
+
+     return users;
+   },
+   getPermittedUsers: (state) => (accountId) => {
+      let usersIds = []
+      usersIds = state.banks[accountId].users
+      let users = []
+      users = usersIds.map(userId => state.users[userId])
+      return users
+   }
+
+  },
    mutations: { //synchronous
      setProducts(state, payload) {
        state.products = payload;
@@ -69,11 +87,7 @@ export default new Vuex.Store({
      setUrls(state) {
        state.endpoints.login = process.env.VUE_APP_AUTH_URL;
        state.endpoints.products = process.env.VUE_APP_PRODUCTS_URL;
-       state.endpoints.bankaccounts = process.env.VUE_APP_BANKACCOUNTS_URL;
-       state.endpoints.subscriptions = process.env.VUE_APP_SUBSCRIPTIONS_URL;
-       urlproducts = state.endpoints.products;
-       urlbankaccounts = state.endpoints.bankaccounts;
-       urlsubscriptions = state.endpoints.subscriptions;
+       url = state.endpoints.products;
        console.log(process.env);
      }
    },
@@ -99,23 +113,11 @@ export default new Vuex.Store({
       }
     },
      async getProducts(state) {
-       const products = await fetch(urlproducts, { headers });
+       const products = await fetch(url, { headers });
        const prods = await products.json();
        state.commit("setProducts", prods);
        console.log(prods);
-     },
-     async getBankAccounts(state) {
-      const bankaccounts = await fetch(urlbankaccounts, { headers });
-      const accounts = await bankaccounts.json();
-      state.commit("setBankAccounts", accounts);
-      console.log(accounts);
-    },
-    async getSubscriptions(state) {
-      const subscriptions = await fetch(urlsubscriptions, { headers });
-      const Subs = await subscriptions.json();
-      state.commit("setBankSubscriptions", Subs);
-      console.log(Subs);
-    }
+     }
    },
    registerProduct({ state }, obj) {
     let productsurl = state.endpoints.products;

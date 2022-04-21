@@ -1,38 +1,44 @@
 <template>
-  <div>
-    <div class="portal">
-      <h1>Bank portal</h1>
-      <button v-on:click="getSubscriptions">Get Subscriptions</button>
-      <button v-on:click="addSubscription">Add Subscriptions</button>
-      <div>{{ subscriptions }}</div>
-    </div>
+  <div class="scription">
+    <h1 id="page-title">SUBSCRIPTION TYPES</h1>
 
-    <div class="scription">
-      <h1 id="page-title">SUBSCRIPTION TYPES</h1>
-      <div id="subscription-container">
-        <router-link to="/subscription/type/1">
-          <div class="subscription-premium">
-            <div class="image-container"></div>
-            <div class="subscription-info-premium">
-              <h3>PREMIUM PACKAGE</h3>
-              <p class="advantages">
-                Advantages: Create, share & manage accounts
-              </p>
-              <p class="price">Price/month: €14,99</p>
-            </div>
+    <div id="subscription-container">
+      <router-link to="/subscription/type/1">
+        <div class="subscription-premium">
+          <div class="image-container">
+            <img
+              class="subscription-logo"
+              src="../assets/premium.jpg"
+              alt=""
+              srcset=""
+            />
           </div>
-        </router-link>
-        <router-link to="/subscription/type/2">
-          <div class="subscription-basic">
-            <div class="image-container"></div>
-            <div class="subscription-info-basic">
-              <h3 class="basic">BASIC PACKAGE</h3>
-              <p class="advantages">Advantages: Share & manage accounts</p>
-              <p class="price">Price: €4,99</p>
-            </div>
+          <div class="subscription-info-premium">
+            <h3>PREMIUM PACKAGE</h3>
+            <p class="advantages">
+              Advantages: Create, share & manage accounts
+            </p>
+            <p class="price">Price/month: €14,99</p>
           </div>
-        </router-link>
-      </div>
+        </div>
+      </router-link>
+      <router-link to="/subscription/type/2">
+        <div class="subscription-basic">
+          <div class="image-container">
+            <img
+              class="subscription-logo"
+              src="../assets/basic.jpeg"
+              alt=""
+              srcset=""
+            />
+          </div>
+          <div class="subscription-info-basic">
+            <h3 class="basic">BASIC PACKAGE</h3>
+            <p class="advantages">Advantages: Share & manage accounts</p>
+            <p class="price">Price: €4,99</p>
+          </div>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
@@ -64,3 +70,7 @@ export default {
   },
 };
 </script>
+
+<style scoped src="../../public/css/Subscription.css">
+/* @import '../assets/css/startpage.css'; */
+</style>
