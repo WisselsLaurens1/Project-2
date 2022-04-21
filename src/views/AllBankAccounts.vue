@@ -4,25 +4,12 @@
     <div class="bank-account">
       <div v-for="account in accounts" :key="account.id">
         <div class="account">
-          <h2>{{ account.accountNumber }}</h2>
-          <p>{{ account.name }}</p>
-          <p>{{ account.amount }}</p>
+          <h2>Accountnumber: {{ account.accountNumber }}</h2>
+          <p>Name: {{ account.name }}</p>
+          <p>Amount: {{ account.amount }}</p>
         </div>
       </div>
     </div>
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input v-model="name" placeholder="name" />
-    </div>
-    <div class="form-group">
-      <label for="accountnumber">Accountnumber:</label>
-      <input v-model="accountnumber" placeholder="accountnumber" />
-    </div>
-    <div class="form-group">
-      <label for="amount">Amount:</label>
-      <input v-model="amount" placeholder="amount" />
-    </div>
-    <button v-on:click="addBankAccounts">Add Bank Account</button>
   </div>
 </template>
 
@@ -59,3 +46,7 @@ export default {
   },
 };
 </script>
+
+<style scoped src="../../public/css/BankAccounts.css">
+/* @import '../assets/css/startpage.css'; */
+</style>
