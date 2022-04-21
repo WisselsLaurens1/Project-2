@@ -1,5 +1,5 @@
 # build stage
-FROM quay.io/jitesoft/node:lts-alpine as build-stage
+FROM quay.io/jitesoft/node as build-stage
 WORKDIR /app
 COPY package*.json ./
 CMD npm install
