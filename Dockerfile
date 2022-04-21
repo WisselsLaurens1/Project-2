@@ -7,7 +7,7 @@ COPY . .
 CMD npm run build
 
 # production stage
-FROM quay.io/jitesoft/nginx:1.17
+FROM quay.io/jitesoft/nginx
 COPY ./nginx.conf /etc/nginx/nginx.conf
 WORKDIR /code
 COPY --from=build-stage /app/dist .
