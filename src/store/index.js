@@ -24,11 +24,22 @@ export default new Vuex.Store({
       login: "http://team17authenticatie-ucllteam08.ucll-ocp-40cb0df2b03969eabb3fac6e80373775-0000.eu-de.containers.appdomain.cloud",
       products: "http://localhost:8000/products"
     },
+    users: 
    },
    getters: {
     products: state => state.products,
     inCart: state => state.inCart,
+    getBank: (state) => (id) => {
+      return state.banks[id]
    },
+   getUsersOfAccount: (state) => (accountId, userPattern) => {
+     let users = state.banks[accountId]
+     users = users.filter(user => {
+       `${user.firstName.toLowerCase} ${user.lastname.toLowerCase}`.includes(userPattern.toLowerCase())
+     })
+     return users;
+   }
+  },
    mutations: { //synchronous
      setProducts(state, payload) {
        state.products = payload;
