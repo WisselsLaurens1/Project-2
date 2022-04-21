@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -18,11 +19,14 @@ export default new Vuex.Store({
       isAuthenticated: false,
       name: "",
       email: "",
-      idToken: ""
+      idToken: "",
+      accessToken: "",
+      partner: false
     },
     endpoints: {
-      login: "http://team17authenticatie-ucllteam08.ucll-ocp-40cb0df2b03969eabb3fac6e80373775-0000.eu-de.containers.appdomain.cloud",
-      products: "http://localhost:8000/products"
+      login: "http://localhost:3000/login",
+      products: "http://localhost:8000/products",
+      partnercheck: "http://localhost:8000/check",
     },
    },
    getters: {
@@ -45,12 +49,18 @@ export default new Vuex.Store({
       state.user.name = "";
       state.user.email ="";
       state.user.idToken ="";
+      state.user.accessToken = "";
+      state.user.partner = "";
      },
      login(state, payload) {
       state.user.isAuthenticated = true;
       state.user.name = payload.name;
       state.user.email =payload.email;
       state.user.idToken =payload.idToken;
+      state.user.accessToken =payload.accessToken;
+     },
+     SET_PARTNER(state, partner) { 
+      state.user.partner = partner;
      },
      setUrls(state) {
        state.endpoints.login = process.env.VUE_APP_AUTH_URL;
@@ -60,6 +70,26 @@ export default new Vuex.Store({
      }
    },
    actions: { //asynchronous
+    async checkPartner({ state, commit }) {
+      let accessToken = state.user.accessToken;
+      console.log("checking partner access", state.endpoints.partnercheck);
+      const AuthStr = 'Bearer '.concat(accessToken);
+      const AuthHeader = { 'Authorization': AuthStr};
+      console.log("AuthToken=",AuthHeader);
+      let response = await fetch(state.endpoints.partnercheck, { 
+        method: 'GET',
+        headers: {
+          'Authorization': AuthStr }
+        });
+      console.log("partneraccess",response);
+      if (response.ok) {
+        commit('SET_PARTNER', true);
+        console.log("TRUE");
+      } else {
+        commit('SET_PARTNER', false);
+        console.log("FALSE");
+      }
+    },
      async getProducts(state) {
        const products = await fetch(url, { headers });
        const prods = await products.json();
@@ -67,6 +97,30 @@ export default new Vuex.Store({
        console.log(prods);
      }
    },
+   registerProduct({ state }, obj) {
+    let productsurl = state.endpoints.products;
+    console.log(productsurl);
+    let accessToken = state.user.accessToken;
+    const AuthStr = 'Bearer '.concat(accessToken);
+    console.log(AuthStr);
+    console.log(obj);
+    axios(productsurl, { 
+        method: 'POST',
+        headers: {
+          'Accept': '*/*',
+          'Content-Type': 'application/json',
+          'Authorization': AuthStr
+        },
+        credentials: 'include',
+        data: obj
+    })
+    .then(response => {
+      console.log('Response:', response);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+    });
+  },
   modules: {
   }
 })
