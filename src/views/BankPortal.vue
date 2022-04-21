@@ -7,47 +7,36 @@
         <img  id="add-button" src="../assets/add-button.png" alt="" srcset="">
       </div>
 
-      <router-link to="/bank-account/account/1">      
-        <div class="bank-account">
-            <div class="image-container">
-              <img class="bank-logo"  src="../assets/kbc-logo.png" alt="" srcset="">
-            </div>
-            <div class="bank-account-info">
-              <p class="balance">Balance: €4201</p>
-              <p class="owner">
-                  Owner: Laurens Wissels
-              </p>
-            </div>
-        </div>
-      </router-link>
-      <router-link to="/bank-account/account/2">      
-        <div class="bank-account">
-            <div class="image-container">
-              <img class="bank-logo"  src="../assets/ing-logo.png" alt="" srcset="">
-            </div>
-          <div class="bank-account-info">
-            <p class="balance">Balance: €201</p>
-            <p class="owner">
-                Owner: Obim
-            </p>
+      <div id="bank-accounts" v-for="account in bankAccounts" :key="account.id">
+        <router-link :to="{ name: 'bank-account', params: { id: account.id }}">
+          <div class="bank-account">
+              <div class="image-container">
+                <img :src="account.image" >
+              </div>
+              <div class="bank-account-info">
+                <p class="balance">Balance: {{account.balance}}</p>
+                <p class="owner">
+                    {{account.number}}
+                </p>
+                <p class="owner">
+                    Owner: {{account.owner}}
+                </p>
+              </div>
           </div>
-        </div>
-      </router-link>
+        </router-link>
+      </div>
+      
+
     </div>
   </div>
-
-
-
 
 </template>
 
 
 <script>
 
-// @ is an alias to /src
-import Item from "@/Item.vue"	
 export default {
-  name: 'Home',
+  name: 'BankPortal',
   methods: {
     getImage(url) {
       console.log(url)
@@ -58,14 +47,8 @@ export default {
     bankAccounts() {
       return this.$store.state.banks;
     },
-
-
-
-
   },
-  components: {
-    Item
-  }
+
 }
 
 

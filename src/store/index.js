@@ -9,7 +9,6 @@ const headers = { Accept: "application/json" };
 const products = require('./products.json');
 
 
-
 export default new Vuex.Store({
   plugins: [createPersistedState()],
   state: {
@@ -29,11 +28,33 @@ export default new Vuex.Store({
       products: "http://localhost:8000/products",
       partnercheck: "http://localhost:8000/check",
     },
+    users: require('./users.json')
    },
    getters: {
     products: state => state.products,
     inCart: state => state.inCart,
+    getBank: (state) => (id) => {
+      return state.banks[id]
    },
+   getUsersOfAccount: (state) => (accountId, userPattern) => {
+
+    console.log("userPattern: ",userPattern)
+
+     let usersIds = state.banks[accountId].users
+     let users = usersIds.map(userId => state.users[userId])
+     users = users.filter(user => `${user.firstName.toLowerCase()} ${user.lastName.toLowerCase()}`.includes(userPattern.toLowerCase()) == true)
+
+     return users;
+   },
+   getPermittedUsers: (state) => (accountId) => {
+      let usersIds = []
+      usersIds = state.banks[accountId].users
+      let users = []
+      users = usersIds.map(userId => state.users[userId])
+      return users
+   }
+
+  },
    mutations: { //synchronous
      setProducts(state, payload) {
        state.products = payload;
