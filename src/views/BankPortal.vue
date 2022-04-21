@@ -7,22 +7,6 @@
         <img  id="add-button" src="../assets/add-button.png" alt="" srcset="">
       </div>
 
-      <!-- <div id="bank-accounts" v-for="account in bankAccounts" :key="account.id">
-        <router-link to="/bank-account/account/1">      
-          <div class="bank-account">
-              <div class="image-container">
-                <img class="bank-logo" :src="require(account.image)" alt="" srcset="">
-              </div>
-              <div class="bank-account-info">
-                <p class="balance">Balance: {{account.balance}}</p>
-                <p class="owner">
-                    Owner: {{account.owner}}
-                </p>
-              </div>
-          </div>
-        </router-link>
-      </div>
-       -->
       <router-link to="/bank-account/account/1">      
         <div class="bank-account">
             <div class="image-container">
@@ -49,11 +33,7 @@
           </div>
         </div>
       </router-link>
-
     </div>
-
-
-
   </div>
 
 

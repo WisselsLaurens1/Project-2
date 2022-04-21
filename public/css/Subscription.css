@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#page-title{
+    text-align: center;
+    margin: 1em
+}
+
+h1{
+    color: rgb(62, 165, 199);
+}
+
+h3{
+    text-align: center;
+}
+
+
+.subscription-info-premium{
+    color: rgb(199, 199, 62);
+}
+
+.subscription-info-basic{
+    color: rgb(62, 165, 199);
+}
+
+
+
+#subscription-container{
+    height:450px;
+    width:fit-content;
+    margin:auto;
+    display: flex;
+}
+
+.subscription-premium{
+    height: 100%;
+    width: 400px;
+    margin: 1em;
+    background-color: #fffed2;
+    box-shadow: 0px 0px 3px #bcbbbb;
+}
+
+.subscription-basic{
+    height: 100%;
+    width: 400px;
+    margin: 1em;
+    box-shadow: 0px 0px 3px #bcbbbb;
+}
+
+.subscription a:hover{
+    text-decoration:none;
+    
+}
+
+.subscription-info{
+    border-top: 1px #bcbbbb;
+
+}
+
+.image-container{
+    height: 60%;
+    background-color:white;
+    display: flex;
+    justify-content: center;
+}
+
+.subscription-logo{
+    width:100%;
+    height:100%;
+}
+
+.advantages{
+    text-align:center;
+    margin-top:1em;
+}
+
+.price{
+    text-align: center;
+    margin-top: 1em;
+}
