@@ -11,7 +11,7 @@
             <div class="subscription-info-premium">
             <h3>PREMIUM PACKAGE</h3>
               <p class="advantages">
-                  Advantages: </p>
+                  Advantages: Create, share & manage accounts</p>
               <p class="price">
                   Price/month: €14,99
               </p>
@@ -26,7 +26,7 @@
           <div class="subscription-info-basic">
           <h3 class="basic">BASIC PACKAGE</h3>
             <p class="advantages">
-            Advantages: </p>
+            Advantages: Share & manage accounts</p>
             <p class="price">
                 Price: €4,99
             </p>
