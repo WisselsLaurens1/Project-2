@@ -46,7 +46,7 @@ export default new Vuex.Store({
 
      return users;
    },
-   getPermittedUsers: (state) => (accountId) => {
+   getPermittedUsers: (state) => (accountId) => {
       let usersIds = []
       usersIds = state.banks[accountId].users
       let users = []

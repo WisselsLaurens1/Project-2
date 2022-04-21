@@ -113,7 +113,7 @@ export default {
       return this.$store.getters.getPermittedUsers(accountId);
     },
     filterFunction() {
-      console.log("whiiii")
+      console.log("whiiii");
       let input = document.getElementById("myInput");
       let filter = input.value.toUpperCase();
       let div = document.getElementById("myDropdown");
@@ -126,21 +126,18 @@ export default {
           a[i].style.display = "none";
         }
       }
-
-
-
     },
-    toggleSearchResults(){
-      if(document.getElementById("myInput").value.length == 0){
-        return
+    toggleSearchResults() {
+      console.log(document.getElementById("myInput").value.length == 0);
+      if (document.getElementById("myInput").value.length == 0) {
+        document.getElementById("search-results").style.display = "none";
       }
-      if(document.getElementById("search-results").style.display == "none"){
-        document.getElementById("search-results").style.display = "block"
-      }else{
-        document.getElementById("search-results").style.display = "none"
+      if (document.getElementById("search-results").style.display == "none") {
+        document.getElementById("search-results").style.display = "block";
+      } else {
+        document.getElementById("search-results").style.display = "none";
       }
-
-    }
+    },
   },
 };
 </script>
